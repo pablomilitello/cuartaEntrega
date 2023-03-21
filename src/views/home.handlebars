@@ -1,0 +1,14 @@
+{{#if products.length}}
+  <h2>Listado de productos existentes</h2>
+  <ul>
+    {{#each products}}
+      <li>#id: {{id}}</li>
+      <li>Producto: {{title}}</li>
+      <li>Descripción: {{description}}</li>
+      <li>Precio: ${{price}}</li>
+      <hr />
+    {{/each}}
+  </ul>
+{{else}}
+  <h2>Products didn't register</h2>
+{{/if}}

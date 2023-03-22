@@ -9,18 +9,30 @@ const inputPrice = document.getElementById('pPrice');
 const inputCode = document.getElementById('pCode');
 const inputStock = document.getElementById('pStock');
 
-const newProduct = {
-  title: inputTitle.value,
-  description: inputDescription.value,
-  category: inputCategory.value,
-  price: inputPrice.value,
-  thumbnail: [],
-  code: inputCode.value,
-  stock: inputStock.value,
-  status: true,
-};
-
-addProduct.onclick = (e) => {
+addProduct.addEventListener('click', (e) => {
   e.preventDefault();
-  socketClient.emit('addNewProduct', ...newProduct);
-};
+  const newProduct = {
+    title: inputTitle.value,
+    description: inputDescription.value,
+    category: inputCategory.value,
+    price: inputPrice.value,
+    thumbnail: [],
+    code: inputCode.value,
+    stock: inputStock.value,
+    status: true,
+  };
+  socketClient.emit('addNewProduct', newProduct);
+  console.log('Product added');
+  document.location.reload();
+});
+
+const deleteProduct = document.getElementById('productsTable');
+deleteProduct.addEventListener('click', (e) => {
+  e.preventDefault();
+  const element = e.target;
+  const productId = element.getAttribute('data-id');
+  if (element.className === 'delete') {
+    socketClient.emit('deleteProduct', parseInt(productId));
+    document.location.reload();
+  }
+});

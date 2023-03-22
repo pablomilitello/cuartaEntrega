@@ -40,8 +40,12 @@ socketServer.on('connection', (socket) => {
     console.log(`Client disconected id: ${socket.id}`);
   });
 
-  socket.on('addNewProduct', (newProduct) => {
-    productManager.addProducts(newProduct);
-    console.log(newProduct);
+  socket.on('addNewProduct', async (product) => {
+    await productManager.addProducts(product);
+  });
+
+  socket.on('deleteProduct', (id) => {
+    console.log(`Product deleted ${id}`);
+    productManager.deleteProductsById(id);
   });
 });

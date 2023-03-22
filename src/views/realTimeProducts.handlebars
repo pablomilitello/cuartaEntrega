@@ -11,14 +11,14 @@
         <th>Delete</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id='productsTable'>
       {{#each products}}
         <tr>
           <td>{{id}}</td>
           <td>{{title}}</td>
           <td>{{description}}</td>
           <td>${{price}}</td>
-          <td><button class='delete'>Delete</button></td>
+          <td><button class='delete' data-id='{{id}}'>Delete</button></td>
         </tr>
       {{/each}}
     </tbody>
@@ -32,7 +32,7 @@
 
 <h2 align='center'>Add products</h2>
 
-<form id='addProduct' align='center'>
+<form id='formProduct' align='center'>
   <input type='text' id='pTitle' name='title' placeholder='title' />
   <input type='text' id='pDescription' name='description' placeholder='description' />
   <input type='text' id='pCategory' name='category' placeholder='category' />

@@ -1,14 +1,30 @@
+<link rel='stylesheet' src='../public/css/index.css' />
+
 {{#if products.length}}
-  <h2>List of existing products online</h2>
-  <ul>
-    {{#each products}}
-      <li>#id: {{id}}</li>
-      <li>Product: {{title}}</li>
-      <li>Description: {{description}}</li>
-      <li>Price: ${{price}}</li>
-      <hr />
-    {{/each}}
-  </ul>
+  <h2 align='center'>List of existing products online</h2>
+
+  <table class='table' id='table' cellPadding='10' border='1' align='center'>
+    <thead>
+      <tr>
+        <th>#id</th>
+        <th>Product</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each products}}
+        <tr>
+          <td>{{id}}</td>
+          <td>{{title}}</td>
+          <td>{{description}}</td>
+          <td>${{price}}</td>
+          <td><button class='delete' dataId='{{id}}'>Borrar</button></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 {{else}}
   <h2>Products didn't register</h2>
 {{/if}}

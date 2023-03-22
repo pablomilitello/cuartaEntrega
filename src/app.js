@@ -6,6 +6,10 @@ import handlebars from 'express-handlebars';
 import viewsRouter from './routes/views.router.js';
 import { Server } from 'socket.io';
 
+import ProductManager from '../ProductManager.js';
+const path = __dirname + '/products.json';
+const productManager = new ProductManager(path);
+
 const app = express();
 
 app.use(express.json());
@@ -34,5 +38,10 @@ socketServer.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     console.log(`Client disconected id: ${socket.id}`);
+  });
+
+  socket.on('addNewProduct', (newProduct) => {
+    productManager.addProducts(newProduct);
+    console.log(newProduct);
   });
 });

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import CartManager from '../../CartManager.js';
+import CartManager from '../Dao/CartManager.js';
 import { __dirname } from '../utils.js';
 
 const path = __dirname + '/carts.json';

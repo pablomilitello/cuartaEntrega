@@ -6,7 +6,7 @@ import handlebars from 'express-handlebars';
 import viewsRouter from './routes/views.router.js';
 import { Server } from 'socket.io';
 
-import ProductManager from '../ProductManager.js';
+import ProductManager from '../src/Dao/ProductManager.js';
 const path = __dirname + '/products.json';
 const productManager = new ProductManager(path);
 
